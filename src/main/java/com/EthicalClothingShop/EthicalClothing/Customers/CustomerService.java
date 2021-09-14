@@ -25,6 +25,7 @@ public class CustomerService {
         return database_access_customer.getCustomerAccountInfo(email, password);
     }
 
+
     private boolean doesCustomerExist(String customerEmail) {
         List<Customer> customers = customerDataAccessService.getAllCustomers();
         return customers.stream().anyMatch(c -> c.getEmail().equals(customerEmail));
@@ -63,5 +64,33 @@ public class CustomerService {
             throw new IllegalStateException("sorry this customer is not registered with us.");
         }
 
+    }
+
+    //Address Methods
+    public void addCustomerAddress(int customerID, int addressID, String firstLineAddress, String secondLineAddress, String city, String postcode) {
+        database_access_customer.addCustomerAddressToDatabase(customerID,addressID,firstLineAddress, secondLineAddress, city,postcode);
+    }
+
+
+    public void updateCustomerAddress(int customerID, int addressID, String firstLineAddress, String secondLineAddress, String city, String postcode) {
+    }
+
+
+    public Customer removeAddress(int addressID) {
+    }
+
+
+    public Customer getAddress(int addressID) {
+    }
+
+
+    public void addDeliveryAddress(int customerID, int addressID) {
+    }
+
+
+    public void addBillingAddress(int customerID, int addressID) {
+    }
+
+    public void addAddressToAddressBook(int customerID, int addressID) {
     }
 }

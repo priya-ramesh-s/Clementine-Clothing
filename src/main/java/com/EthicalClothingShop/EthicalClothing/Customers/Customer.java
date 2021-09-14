@@ -7,16 +7,18 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String firstLineAddress;
+    private String secondLineAddress;
     private String city;
     private String postcode;
     private String email;
     private BigInteger mobileNumber;
     private String password;
-    private int id;
+    private int customerID;
+    private int addressID;
 
-    public Customer(String firstName, String lastName, String firstLineAddress,
+    public Customer(String firstName, String lastName, String firstLineAddress, String secondLineAddress,
                     String city, String postcode, String email,
-                    BigInteger mobileNumber,int id, String password) {
+                    BigInteger mobileNumber, String password, int customerID, int addressID) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,7 +28,7 @@ public class Customer {
         this.email = email;
         this.mobileNumber = mobileNumber;
         this.password = password;
-        this.id = id;
+        this.customerID = customerID;
     }
 
     public Customer(String firstName, String lastName, String email, BigInteger mobileNumber) {
@@ -36,7 +38,9 @@ public class Customer {
         this.mobileNumber = mobileNumber;
     }
 
-    public String getFirstName() { return firstName; }
+    public String getFirstName() {
+        return firstName;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -90,12 +94,36 @@ public class Customer {
         this.mobileNumber = mobileNumber;
     }
 
-    public int getId() {
-        return id;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
+
+    public int getAddressID() {
+        return addressID;
+    }
+
+    public void setAddressID(int addressID) {
+        this.addressID = addressID;
+    }
+
+    public String getSecondLineAddress() {
+        return secondLineAddress;
+    }
+
+    public void setSecondLineAddress(String secondLineAddress) {
+        this.secondLineAddress = secondLineAddress;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -104,10 +132,14 @@ public class Customer {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", firstLineAddress='" + firstLineAddress + '\'' +
+                ", secondLineAddress='" + secondLineAddress + '\'' +
                 ", city='" + city + '\'' +
                 ", postcode='" + postcode + '\'' +
                 ", email='" + email + '\'' +
                 ", mobileNumber=" + mobileNumber +
+                ", password='" + password + '\'' +
+                ", customerID=" + customerID +
+                ", addressID=" + addressID +
                 '}';
     }
 
@@ -116,11 +148,13 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return mobileNumber == customer.mobileNumber && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(firstLineAddress, customer.firstLineAddress) && Objects.equals(city, customer.city) && Objects.equals(postcode, customer.postcode) && Objects.equals(email, customer.email);
+        return customerID == customer.customerID && addressID == customer.addressID && Objects.equals(firstName, customer.firstName) && Objects.equals(lastName, customer.lastName) && Objects.equals(firstLineAddress, customer.firstLineAddress) && Objects.equals(secondLineAddress, customer.secondLineAddress) && Objects.equals(city, customer.city) && Objects.equals(postcode, customer.postcode) && Objects.equals(email, customer.email) && Objects.equals(mobileNumber, customer.mobileNumber) && Objects.equals(password, customer.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, firstLineAddress, city, postcode, email, mobileNumber);
+        return Objects.hash(firstName, lastName, firstLineAddress, secondLineAddress, city, postcode, email, mobileNumber, password, customerID, addressID);
     }
 }
+
+

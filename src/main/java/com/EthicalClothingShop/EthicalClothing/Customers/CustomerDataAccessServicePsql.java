@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.math.BigInteger;
 
 @Repository
-public class CustomerDataAccessServicePsql implements CustomerDAO{
+public class CustomerDataAccessServicePsql implements CustomerDAO {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -39,4 +39,9 @@ public class CustomerDataAccessServicePsql implements CustomerDAO{
         return customer_account_details;
     }
 
+    public void addCustomerAddressToDatabase(int customerID, int addressID, String firstLineAddress, String secondLineAddress, String city, String postcode) {
+    }
 }
+
+
+
