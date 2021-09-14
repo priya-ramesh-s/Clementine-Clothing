@@ -7,7 +7,9 @@ import java.util.List;
 @Service
 public class CustomerService {
     private CustomerDataAccessServicePsql database_access_customer;
+    private Customer customerAccountInfo;
 
+    // constructor
     public CustomerService(CustomerDataAccessServicePsql customerDataAccessServicePsql) {
         this. database_access_customer = customerDataAccessServicePsql;
     }
@@ -93,4 +95,36 @@ public class CustomerService {
 
     public void addAddressToAddressBook(int customerID, int addressID) {
     }
+
+    public void addNewCustomer(String firstName, String lastName, String email, int mobile,
+                               String password, String firstLineAddress, String secondLineAddress,
+                               String city_town, String postcode) {
+        // call a method from psql_customer class and pass it firstName, lastName, email, mobile, password
+        int newCustomerId = database_access_customer.addNewCustomerRecord(firstName, lastName, email, mobile, password);
+        // add new address to addresses table
+        int addressId = addNewAddress(firstLineAddress, secondLineAddress, city_town, postcode);
+        //addDefaultDeliveryAddress(addressId, this.customerAccountInfo.getCustomerID());
+        //addDefaultBillingAddress(addressId, this.customerAccountInfo.getCustomerID());
+    }
+
+    public int addNewAddress(String firstLineAddress, String secondLineAddress,
+                              String city_town, String postcode) {
+        //call method in customerDataAccessServicePsql
+        int addressId = database_access_customer.addNewCustomerAddressRecord(firstLineAddress, secondLineAddress, city_town, postcode, this.customerAccountInfo.getCustomerID());
+
+        return addressId;
+    }
+
+    public void addDefaultDeliveryAddress(int addressId, int customerId) {
+
+    }
+
+    public void addDefaultBillingAddress(int addressId, int customerId) {
+
+    }
+
+
+
+
+
 }

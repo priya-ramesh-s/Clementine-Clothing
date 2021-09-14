@@ -41,6 +41,17 @@ public class CustomerDataAccessServicePsql implements CustomerDAO {
 
     public void addCustomerAddressToDatabase(int customerID, int addressID, String firstLineAddress, String secondLineAddress, String city, String postcode) {
     }
+
+    public int addNewCustomerRecord(String firstName, String lastName, String customerEmail, int mobile, String password) {
+        // add parameter (e.g firstName) values to customer_information table using sql and jdbcTemplate.update(sql query,
+        //                                                                                                       parameter values in order of query)
+
+        // then do sql query => "SELECT customer_id FROM clothing_information WHERE email LIKE " + "'"customerEmail"'"
+        //return(jdbcTemplate.getObject(sql query, int.class));
+
+
+
+    }
 }
 
 

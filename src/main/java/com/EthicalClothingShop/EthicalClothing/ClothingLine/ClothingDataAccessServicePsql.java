@@ -109,12 +109,4 @@ public class ClothingDataAccessServicePsql implements ClothingDAO{
 //                    WHERE clothing_id = ?"""  + clothingItem.getId();
         jdbcTemplate.update("DELETE FROM clothing_items_inventory WHERE clothing_id = " + clothingItem.getId());
     }
-
-//    public void removeClothingItemBySize(String clothingItemSize) {
-//        size_id_to_remove = "SELECT size_id FROM sizes WHERE size_name LIKE 'xxs'";
-//        "SELECT * FROM clothing_items_inventory WHERE size_id LIKE size_id_to_remove";
-//
-//    }
-
-
 }
