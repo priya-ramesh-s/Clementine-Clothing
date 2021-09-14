@@ -80,9 +80,9 @@ public class CustomerService {
     }
 
 
-    public Customer getAddress(int addressID) {
+    public Customer getAddress(int customerID, int addressID, String firstLineAddress, String secondLineAddress, String city, String postcode) {
+        return database_access_customer.getCustomerAddressInfo(customerID, addressID, firstLineAddress, secondLineAddress, city, postcode);
     }
-
 
     public void addDeliveryAddress(int customerID, int addressID) {
     }
