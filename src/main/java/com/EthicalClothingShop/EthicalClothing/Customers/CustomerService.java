@@ -33,10 +33,10 @@ public class CustomerService {
         return customers.stream().anyMatch(c -> c.getEmail().equals(customerEmail));
     }
 
-    public void addCustomer(Customer customer) {
-        if (!doesCustomerExist(customer.getEmail())) {
-            customerDataAccessService.addNewCustomer(customer);
-        }
+//    public void addCustomer(Customer customer) {
+//        if (!doesCustomerExist(customer.getEmail())) {
+//            customerDataAccessService.addNewCustomer(customer);
+//        }
     }
 
     public void removeCustomer(Customer customer) {
@@ -96,13 +96,13 @@ public class CustomerService {
     public void addAddressToAddressBook(int customerID, int addressID) {
     }
 
-    public void addNewCustomer(String firstName, String lastName, String email, int mobile,
+    public void addCustomer(String firstName, String lastName, String email, int mobile,
                                String password, String firstLineAddress, String secondLineAddress,
-                               String city_town, String postcode) {
+                               String city, String postcode) {
         // call a method from psql_customer class and pass it firstName, lastName, email, mobile, password
-        int newCustomerId = database_access_customer.addNewCustomerRecord(firstName, lastName, email, mobile, password);
+        int newCustomerId = database_access_customer.addNewCustomerIntoDataBase(firstName, lastName, email, password, mobile);
         // add new address to addresses table
-        int addressId = addNewAddress(firstLineAddress, secondLineAddress, city_town, postcode);
+        int addressId = addNewAddress(firstLineAddress, secondLineAddress, city, postcode);
         //addDefaultDeliveryAddress(addressId, this.customerAccountInfo.getCustomerID());
         //addDefaultBillingAddress(addressId, this.customerAccountInfo.getCustomerID());
     }
@@ -110,7 +110,7 @@ public class CustomerService {
     public int addNewAddress(String firstLineAddress, String secondLineAddress,
                               String city_town, String postcode) {
         //call method in customerDataAccessServicePsql
-        int addressId = database_access_customer.addNewCustomerAddressRecord(firstLineAddress, secondLineAddress, city_town, postcode, this.customerAccountInfo.getCustomerID());
+        int addressId = database_access_customer.addNewCustomerIntoDataBase(firstLineAddress, secondLineAddress, city_town, postcode, this.customerAccountInfo.getCustomerID());
 
         return addressId;
     }
