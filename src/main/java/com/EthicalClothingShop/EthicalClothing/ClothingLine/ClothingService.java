@@ -68,7 +68,7 @@ public class ClothingService {
     }
 
     public void addClothingSubtype(String subtype) {
-        database_access.addClothingType(subtype);
+        database_access.addClothingSubtype(subtype);
     }
 
     public void addClothingMaterial(String material) {

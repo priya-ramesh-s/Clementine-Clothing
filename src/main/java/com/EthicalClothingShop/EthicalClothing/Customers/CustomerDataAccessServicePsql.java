@@ -30,9 +30,9 @@ public class CustomerDataAccessServicePsql implements CustomerDAO{
         // checks if customer exists, method returns true if customer exists, if customer doesn't exist method returns false
         boolean customerFound = true;
         try {
-            String findCustomerEmailQuery = "SELECT email, customer_id FROM customer_information " +
+            String findCustomerEmailQuery = "SELECT customer_id FROM customer_information " +
                     "WHERE email LIKE " + "'" + customerEmail + "'";
-            String email = jdbcTemplate.queryForObject(findCustomerEmailQuery, String.class);
+            int customerId = jdbcTemplate.queryForObject(findCustomerEmailQuery, int.class);
         } catch (Exception e) {
             customerFound = false;
             return customerFound;

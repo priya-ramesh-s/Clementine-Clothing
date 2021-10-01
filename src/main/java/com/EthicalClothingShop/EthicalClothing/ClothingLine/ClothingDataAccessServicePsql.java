@@ -100,12 +100,12 @@ public class ClothingDataAccessServicePsql implements ClothingDAO {
         System.out.println("material id " + material_id);
 
         String addNewClothingItemRecord = """
-        INSERT INTO clothing_items_inventory(clothing_id, type_id, subtype_id,
+        INSERT INTO clothing_items_inventory(type_id, subtype_id,
                                               size_id, color_id, material_id,
                                               quantity, unit_retail_price) 
-                                              VALUES(?, ?, ?, ?, ?, ?, ?, ?)
+                                              VALUES(?, ?, ?, ?, ?, ?, ?)
         """;
-        jdbcTemplate.update(addNewClothingItemRecord,clothingItem.getId(), type_id, subtype_id,
+        jdbcTemplate.update(addNewClothingItemRecord, type_id, subtype_id,
                                         size_id, color_id, material_id, clothingItem.getQuantity(),
                                         clothingItem.getPrice());
     }

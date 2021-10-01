@@ -128,7 +128,11 @@ public class CustomerService {
                                       String deliveryPostcode, String password) throws Exception {
 
         boolean customerExists = this.doesCustomerExist(email);
+        // if customerExists is true that means customer account exists and error should be thrown by entering the else
+        // if customerExists is false that means customer account doesn't exist and so enter if and create new account
+        System.out.println(customerExists);
         if (!customerExists) {
+            System.out.println("Entering if");
             int newCustomerId = database_access_customer.addCustomerInformation(firstName, lastName, email,
                                                                                 mobile, password);
 
@@ -138,9 +142,9 @@ public class CustomerService {
                                         firstLineDeliveryAddress, secondLineDeliveryAddress,
                                         deliveryCityOrTown, deliveryCountyOrState, deliveryPostcode);
         } else {
-
+            System.out.println("Entered else");
             throw new Exception("We already have an account with this email address, please try logging in");
-            }
+        }
         }
 
 

@@ -37,11 +37,13 @@ public class CustomerController {
                                @RequestParam String deliveryPostcode,
                                @RequestParam String password) {
         try {
+            System.out.println("gone into the try in customer controller");
             customerService.addNewCustomerAccount(firstName, lastName, email,
                     mobile, firstLineBillingAddress, secondLineBillingAddress,
                     billingCityOrTown, billingCountyOrState, billingPostcode, firstLineDeliveryAddress,
                     secondLineDeliveryAddress, deliveryCityOrTown, deliveryCountyOrState, deliveryPostcode, password);
         } catch(Exception e) {
+            System.out.println("in catch in customercontroller");
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT, e.getMessage(), e);
         }
@@ -99,10 +101,10 @@ public class CustomerController {
 
     @PostMapping("/logged_in/add_new_address")
     public void addCustomerAddress(@RequestParam String firstLineAddress,
-                                      @RequestParam (required = false) String secondLineAddress,
-                                      @RequestParam String cityOrTown,
-                                      @RequestParam String countyOrState,
-                                      @RequestParam String postcode) {
+                                   @RequestParam (required = false) String secondLineAddress,
+                                   @RequestParam String cityOrTown,
+                                   @RequestParam String countyOrState,
+                                   @RequestParam String postcode) {
         customerService.addCustomerAddress(firstLineAddress, secondLineAddress, cityOrTown, countyOrState, postcode);
     }
 
